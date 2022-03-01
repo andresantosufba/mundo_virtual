@@ -22,8 +22,8 @@ function main() {
 
 
 	camera.position.x=0;
-	camera.position.y=0;
-	camera.position.z=0;
+	camera.position.y=1.5;
+	camera.position.z=2;
 	var room,gondola;
 	var geometryGondola;
 	var materialGondola;
@@ -31,12 +31,22 @@ function main() {
 	var prateleira;
 	var geometryPrateleira;
 
+	var goob;
+	var geometrygoob;
+	var materialGoob;
+
 	
-	camera.position.set( 0, 1.6, 3 );
+	camera.position.set( 0, 3.6, 2 );
+	camera.lookAt(0,4,6);
 	controls.update();
+	controls.object.position.set(-1.8, 1.5, 1.5);
+	controls.target= new THREE.Vector3(-1.5,1.4,-3);
 
 	var texture_loader = new THREE.TextureLoader();
-	var texture = texture_loader.load('../images/madeira1.jpg');
+	var texture = texture_loader.load('../images/madeira2.jpg');
+
+	var texture_loader_goob = new THREE.TextureLoader();
+	var textureGoob = texture_loader_goob.load('../images/goob1.jpg');
 
 
 
@@ -78,6 +88,12 @@ function main() {
 	prateleira.position.y = -0.4;
 	scene.add(prateleira);
 	
+	geometrygoob = new THREE.CylinderGeometry(0.1,0.1,0.3);
+	materialGoob = new THREE.MeshLambertMaterial({color: 0xffffff, map: textureGoob})
+	goob = new THREE.Mesh(geometrygoob,materialGoob);
+	goob.geometry.translate(-1.5,1.2,-2.7);
+	goob.userData.clickable = true;
+	scene.add(goob);
 
 
 
