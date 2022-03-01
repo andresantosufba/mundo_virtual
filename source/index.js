@@ -46,7 +46,7 @@ function main() {
 	var texture = texture_loader.load('../images/madeira2.jpg');
 
 	var texture_loader_goob = new THREE.TextureLoader();
-	var textureGoob = texture_loader_goob.load('../images/goob1.jpg');
+	var textureGoob = texture_loader_goob.load('../images/goob1.JPG');
 
 
 
