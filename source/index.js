@@ -129,13 +129,12 @@ function main() {
 		scene.add(goob);
 		setup();
 	}
-	function setup(){
+	
 
-		controller = renderer.xr.getController(0);
-		controller.addEventListener('select',onSelect);
-		scene.add(controller);
-	}
-
+	controller = renderer.xr.getController(0);
+	controller.addEventListener('select',onSelect);
+	scene.add(controller);
+	
 	
 
 	// controls.movementSpeed = 10;
