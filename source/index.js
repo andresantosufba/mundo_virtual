@@ -13,7 +13,7 @@ import { ARButton } from '../three.js-master/examples/jsm/webxr/ARButton.js';
 function main() {
 
 	var scene 		= new THREE.Scene();
-
+	var render;
 	// var renderer 	= new THREE.WebGLRenderer();
 	var renderer 	= new THREE.WebGLRenderer({ antialias: true, alpha: true });
 	var controls,clock;
@@ -26,12 +26,13 @@ function main() {
 	//var camera 		= new THREE.Camera();
 	//const camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -1, 1000 );
 	const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 100 );
-	// renderer.setClearColor(new THREE.Color(0.4, 0.4, 0.4));
+	renderer.setClearColor(new THREE.Color(0.4, 0.4, 0.4));
 	renderer.setPixelRatio( window.devicePixelRatio );
 	renderer.setSize(window.innerWidth*0.8, window.innerHeight*0.8);
 	renderer.xr.enabled = true;
 	container.appendChild( renderer.domElement );
 	document.body.appendChild( ARButton.createButton( renderer ) );
+	scene.background= new THREE.Color(0xcccccc);
 
 
 	document.getElementById("WebGL-output").appendChild(renderer.domElement);
@@ -118,9 +119,10 @@ function main() {
 		geometrygoob = new THREE.CylinderGeometry(0.1,0.1,0.3);
 		materialGoob = new THREE.MeshLambertMaterial({color: 0xffffff, map: textureGoob})
 		goob = new THREE.Mesh(geometrygoob,materialGoob);
-		goob.geometry.translate(-1.5,1.2,-2.7);
-		goob.userData.clickable = true;
-		goob.position.set( 0, 0, - 0.3 ).applyMatrix4( controller.matrixWorld );
+		// goob.geometry.translate(-1.5,1.2,-2.7);
+		// goob.userData.clickable = true;
+		// goob.position.set( 0, 0, - 0.5 ).applyMatrix4( controller.matrixWorld );
+		goob.position.set( -1.5, 1.2, - 2.7 ).applyMatrix4( controller.matrixWorld );
 		goob.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		scene.add(goob);
 	}
@@ -289,6 +291,7 @@ function main() {
 		controls.update(delta);
 		// controls.movementSpeed = 0.33;
 		requestAnimationFrame(animate);	
+		renderer.setAnimationLoop( render );
 	}
 	animate();
 	//renderer.render(scene, camera);
