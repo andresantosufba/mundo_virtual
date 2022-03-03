@@ -118,7 +118,8 @@ function main() {
 	geometrygoob = new THREE.CylinderGeometry(0.1,0.1,0.3);
 
 	function onSelect(){
-		materialGoob = new THREE.MeshLambertMaterial({color: 0xffffff, map: textureGoob})
+		// materialGoob = new THREE.MeshLambertMaterial({color: 0xffffff, map: textureGoob})
+		materialGoob = new THREE.MeshPhongMaterial({color: 0xffffff * Math.random()})
 		goob = new THREE.Mesh(geometrygoob,materialGoob);
 		// goob.geometry.translate(-1.5,1.2,-2.7);
 		// goob.userData.clickable = true;
