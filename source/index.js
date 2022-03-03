@@ -127,6 +127,7 @@ function main() {
 		// goob.position.set( -1.5, 1.2, - 2.7 ).applyMatrix4( controller.matrixWorld );
 		goob.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		scene.add(goob);
+		setup();
 	}
 	function setup(){
 
@@ -294,10 +295,10 @@ function main() {
 		const delta = clock.getDelta();
 		renderer.render(scene, camera);
 		controls.update(delta);
-		setup();
+		// setup();
 		// controls.movementSpeed = 0.33;
 		requestAnimationFrame(animate);	
-		renderer.setAnimationLoop( render );
+		renderer.setAnimationLoop( animate );
 	}
 	animate();
 	//renderer.render(scene, camera);
