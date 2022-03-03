@@ -57,6 +57,7 @@ function main() {
 	var geometrygoob;
 	var materialGoob;
 	const helper = new THREE.CameraHelper( camera );
+	helper.visible = false;
 	scene.add( helper );
 
 	var goobgltf;
@@ -127,7 +128,7 @@ function main() {
 		// goob.position.set( -1.5, 1.2, - 2.7 ).applyMatrix4( controller.matrixWorld );
 		goob.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		scene.add(goob);
-		setup();
+		
 	}
 	
 
