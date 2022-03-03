@@ -128,9 +128,12 @@ function main() {
 		goob.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		scene.add(goob);
 	}
-	controller = renderer.xr.getController(0);
-	controller.addEventListener('select',onSelect);
-	scene.add(controller);
+	function setup(){
+
+		controller = renderer.xr.getController(0);
+		controller.addEventListener('select',onSelect);
+		scene.add(controller);
+	}
 
 	
 
@@ -291,6 +294,7 @@ function main() {
 		const delta = clock.getDelta();
 		renderer.render(scene, camera);
 		controls.update(delta);
+		setup();
 		// controls.movementSpeed = 0.33;
 		requestAnimationFrame(animate);	
 		renderer.setAnimationLoop( render );
