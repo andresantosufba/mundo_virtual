@@ -115,14 +115,15 @@ function main() {
 	prateleira = new THREE.Mesh(geometryPrateleira,new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide, map:texture}));
 	prateleira.position.y = -0.4;
 	scene.add(prateleira);
+	geometrygoob = new THREE.CylinderGeometry(0.1,0.1,0.3);
+
 	function onSelect(){
-		geometrygoob = new THREE.CylinderGeometry(0.1,0.1,0.3);
 		materialGoob = new THREE.MeshLambertMaterial({color: 0xffffff, map: textureGoob})
 		goob = new THREE.Mesh(geometrygoob,materialGoob);
 		// goob.geometry.translate(-1.5,1.2,-2.7);
 		// goob.userData.clickable = true;
-		// goob.position.set( 0, 0, - 0.5 ).applyMatrix4( controller.matrixWorld );
-		goob.position.set( -1.5, 1.2, - 2.7 ).applyMatrix4( controller.matrixWorld );
+		goob.position.set( 0, 0, - 0.5 ).applyMatrix4( controller.matrixWorld );
+		// goob.position.set( -1.5, 1.2, - 2.7 ).applyMatrix4( controller.matrixWorld );
 		goob.quaternion.setFromRotationMatrix( controller.matrixWorld );
 		scene.add(goob);
 	}
